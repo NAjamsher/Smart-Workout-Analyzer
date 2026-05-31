@@ -1,0 +1,86 @@
+2026-02-28 10:16:47,426 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.181:5000
+2026-02-28 10:16:47,428 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-28 10:16:47,432 | INFO |  * Restarting with stat
+2026-02-28 10:16:48,927 | WARNING |  * Debugger is active!
+2026-02-28 10:16:48,931 | INFO |  * Debugger PIN: 433-719-920
+2026-02-28 10:16:53,648 | INFO | Home page visited
+2026-02-28 10:16:53,761 | INFO | 127.0.0.1 - - [28/Feb/2026 10:16:53] "GET / HTTP/1.1" 200 -
+2026-02-28 10:16:54,005 | INFO | 127.0.0.1 - - [28/Feb/2026 10:16:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-28 10:19:44,660 | INFO | 127.0.0.1 - - [28/Feb/2026 10:19:44] "GET /analyzer HTTP/1.1" 200 -
+2026-02-28 10:20:38,365 | INFO | Prediction: age=25, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-02-28 10:20:38,367 | INFO | 127.0.0.1 - - [28/Feb/2026 10:20:38] "POST /analyzer HTTP/1.1" 200 -
+2026-02-28 10:20:58,313 | INFO | 127.0.0.1 - - [28/Feb/2026 10:20:58] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 10:21:29,239 | INFO | Workout added: Strength Training on 2026-02-28
+2026-02-28 10:21:29,241 | INFO | 127.0.0.1 - - [28/Feb/2026 10:21:29] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-02-28 10:21:29,252 | INFO | 127.0.0.1 - - [28/Feb/2026 10:21:29] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 10:21:35,155 | INFO | Dashboard loaded: 2 workouts
+2026-02-28 10:21:35,223 | INFO | 127.0.0.1 - - [28/Feb/2026 10:21:35] "GET /dashboard HTTP/1.1" 200 -
+2026-02-28 10:21:51,435 | INFO | 127.0.0.1 - - [28/Feb/2026 10:21:51] "GET /diet HTTP/1.1" 200 -
+2026-02-28 10:22:12,121 | INFO | Diet plan generated: goal=muscle_gain
+2026-02-28 10:22:12,122 | INFO | 127.0.0.1 - - [28/Feb/2026 10:22:12] "POST /diet HTTP/1.1" 200 -
+2026-02-28 10:23:04,290 | INFO | Home page visited
+2026-02-28 10:23:04,291 | INFO | 127.0.0.1 - - [28/Feb/2026 10:23:04] "GET / HTTP/1.1" 200 -
+2026-02-28 11:09:35,539 | INFO | Home page visited
+2026-02-28 11:09:35,540 | INFO | 127.0.0.1 - - [28/Feb/2026 11:09:35] "GET / HTTP/1.1" 200 -
+2026-02-28 11:26:52,757 | INFO | Home page visited
+2026-02-28 11:26:52,758 | INFO | 127.0.0.1 - - [28/Feb/2026 11:26:52] "GET / HTTP/1.1" 200 -
+2026-02-28 11:29:40,525 | INFO | 127.0.0.1 - - [28/Feb/2026 11:29:40] "GET /analyzer HTTP/1.1" 200 -
+2026-02-28 11:30:28,245 | INFO | Prediction: age=21, goal=muscle_gain, exp=intermediate \u2192 Strength Training
+2026-02-28 11:30:28,246 | INFO | 127.0.0.1 - - [28/Feb/2026 11:30:28] "POST /analyzer HTTP/1.1" 200 -
+2026-02-28 11:31:13,488 | INFO | Dashboard loaded: 2 workouts
+2026-02-28 11:31:13,490 | INFO | 127.0.0.1 - - [28/Feb/2026 11:31:13] "GET /dashboard HTTP/1.1" 200 -
+2026-02-28 11:31:19,217 | INFO | 127.0.0.1 - - [28/Feb/2026 11:31:19] "GET /diet HTTP/1.1" 200 -
+2026-02-28 11:32:00,347 | INFO | 127.0.0.1 - - [28/Feb/2026 11:32:00] "GET /analyzer HTTP/1.1" 200 -
+2026-02-28 11:32:04,334 | INFO | 127.0.0.1 - - [28/Feb/2026 11:32:04] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 11:32:16,039 | INFO | Workout added: Strength Training on 2026-02-28
+2026-02-28 11:32:16,041 | INFO | 127.0.0.1 - - [28/Feb/2026 11:32:16] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-02-28 11:32:16,053 | INFO | 127.0.0.1 - - [28/Feb/2026 11:32:16] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 11:32:22,176 | INFO | Dashboard loaded: 3 workouts
+2026-02-28 11:32:22,178 | INFO | 127.0.0.1 - - [28/Feb/2026 11:32:22] "GET /dashboard HTTP/1.1" 200 -
+2026-02-28 12:51:39,609 | INFO | Home page visited
+2026-02-28 12:51:39,612 | INFO | 127.0.0.1 - - [28/Feb/2026 12:51:39] "GET / HTTP/1.1" 200 -
+2026-02-28 12:54:12,012 | INFO | 127.0.0.1 - - [28/Feb/2026 12:54:12] "GET /analyzer HTTP/1.1" 200 -
+2026-02-28 12:54:36,779 | INFO | Prediction: age=22, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-02-28 12:54:36,780 | INFO | 127.0.0.1 - - [28/Feb/2026 12:54:36] "POST /analyzer HTTP/1.1" 200 -
+2026-02-28 12:55:46,417 | INFO | 127.0.0.1 - - [28/Feb/2026 12:55:46] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 12:56:03,800 | INFO | Workout added: Strength Training on 2026-02-28
+2026-02-28 12:56:03,802 | INFO | 127.0.0.1 - - [28/Feb/2026 12:56:03] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-02-28 12:56:03,813 | INFO | 127.0.0.1 - - [28/Feb/2026 12:56:03] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 12:56:14,095 | INFO | Dashboard loaded: 4 workouts
+2026-02-28 12:56:14,097 | INFO | 127.0.0.1 - - [28/Feb/2026 12:56:14] "GET /dashboard HTTP/1.1" 200 -
+2026-02-28 12:56:53,621 | INFO | 127.0.0.1 - - [28/Feb/2026 12:56:53] "GET /diet HTTP/1.1" 200 -
+2026-02-28 12:57:23,568 | INFO | Diet plan generated: goal=muscle_gain
+2026-02-28 12:57:23,569 | INFO | 127.0.0.1 - - [28/Feb/2026 12:57:23] "POST /diet HTTP/1.1" 200 -
+2026-02-28 13:02:31,998 | INFO | Home page visited
+2026-02-28 13:02:32,000 | INFO | 127.0.0.1 - - [28/Feb/2026 13:02:32] "GET / HTTP/1.1" 200 -
+2026-02-28 13:02:34,968 | INFO | Home page visited
+2026-02-28 13:02:34,970 | INFO | 127.0.0.1 - - [28/Feb/2026 13:02:34] "GET / HTTP/1.1" 200 -
+2026-02-28 13:07:15,431 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.181:5000
+2026-02-28 13:07:15,432 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-28 13:07:15,434 | INFO |  * Restarting with stat
+2026-02-28 13:07:16,660 | WARNING |  * Debugger is active!
+2026-02-28 13:07:16,662 | INFO |  * Debugger PIN: 433-719-920
+2026-02-28 13:07:21,114 | INFO | Home page visited
+2026-02-28 13:07:21,140 | INFO | 127.0.0.1 - - [28/Feb/2026 13:07:21] "GET / HTTP/1.1" 200 -
+2026-02-28 13:08:18,892 | INFO | 127.0.0.1 - - [28/Feb/2026 13:08:18] "GET /analyzer HTTP/1.1" 200 -
+2026-02-28 13:08:44,386 | INFO | Prediction: age=22, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-02-28 13:08:44,397 | INFO | 127.0.0.1 - - [28/Feb/2026 13:08:44] "POST /analyzer HTTP/1.1" 200 -
+2026-02-28 13:08:44,395 | INFO | Prediction: age=22, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-02-28 13:08:44,398 | INFO | 127.0.0.1 - - [28/Feb/2026 13:08:44] "POST /analyzer HTTP/1.1" 200 -
+2026-02-28 13:08:44,419 | INFO | Prediction: age=22, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-02-28 13:08:44,420 | INFO | 127.0.0.1 - - [28/Feb/2026 13:08:44] "POST /analyzer HTTP/1.1" 200 -
+2026-02-28 13:08:58,519 | INFO | 127.0.0.1 - - [28/Feb/2026 13:08:58] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 13:09:08,724 | INFO | Workout added: Strength Training on 2026-02-28
+2026-02-28 13:09:08,726 | INFO | 127.0.0.1 - - [28/Feb/2026 13:09:08] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-02-28 13:09:08,737 | INFO | 127.0.0.1 - - [28/Feb/2026 13:09:08] "GET /tracker HTTP/1.1" 200 -
+2026-02-28 13:09:13,472 | INFO | Dashboard loaded: 5 workouts
+2026-02-28 13:09:13,504 | INFO | 127.0.0.1 - - [28/Feb/2026 13:09:13] "GET /dashboard HTTP/1.1" 200 -
+2026-02-28 13:09:19,054 | INFO | 127.0.0.1 - - [28/Feb/2026 13:09:19] "GET /diet HTTP/1.1" 200 -
+2026-02-28 13:09:34,669 | INFO | Diet plan generated: goal=muscle_gain
+2026-02-28 13:09:34,670 | INFO | 127.0.0.1 - - [28/Feb/2026 13:09:34] "POST /diet HTTP/1.1" 200 -

@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+{% block title %}AI Workout Analyzer{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding: 3rem 0 1rem;">
+        <h1 class="page-title">🤖 AI Workout Analyzer</h1>
+        <p class="page-subtitle">
+            Enter your stats below. Our Machine Learning model will recommend the perfect workout
+            and predict how many calories you'll burn.
+        </p>
+    </div>
+
+    <!-- ── Input Form ─────────────────────────────────────────────────────── -->
+    <div class="card">
+        <h2 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; color:#a0a0b0;
+                   letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem;">
+            Your Profile
+        </h2>
+        <form method="POST" action="/analyzer">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Age (years)</label>
+                    <input type="number" name="age" min="10" max="100" placeholder="e.g. 25" required>
+                </div>
+                <div class="form-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" name="weight" step="0.1" min="30" max="300" placeholder="e.g. 70.5" required>
+                </div>
+                <div class="form-group">
+                    <label>Height (cm)</label>
+                    <input type="number" name="height" step="0.1" min="100" max="250" placeholder="e.g. 175" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Fitness Goal</label>
+                    <select name="goal" required id="goal-select" onchange="updateGoalInfo()">
+                        <option value="weight_loss">🔥 Weight Loss</option>
+                        <option value="muscle_gain">💪 Muscle Gain</option>
+                        <option value="endurance">🚴 Endurance</option>
+                        <option value="flexibility">🧘 Flexibility</option>
+                        <option value="general_fitness">⚡ General Fitness</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Experience Level</label>
+                    <select name="experience" required>
+                        <option value="beginner">🌱 Beginner</option>
+                        <option value="intermediate">⚡ Intermediate</option>
+                        <option value="advanced">🔥 Advanced</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                🤖 Get AI Recommendation
+            </button>
+        </form>
+    </div>
+
+    <!-- ── Error Box ──────────────────────────────────────────────────────── -->
+    {% if error %}
+    <div class="error-box">⚠️ {{ error }}</div>
+    {% endif %}
+
+    <!-- ── Results ────────────────────────────────────────────────────────── -->
+    {% if result %}
+    <div class="result-box">
+        <h2 class="result-title">
+            {{ result.icon }} AI Recommendation: {{ result.workout_type }}
+        </h2>
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="r-value">{{ result.calories }}</div>
+                <div class="r-label">Calories Burned</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value">{{ result.bmi }}</div>
+                <div class="r-label">Your BMI</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value">{{ result.fitness_score }}</div>
+                <div class="r-label">Fitness Score</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="font-size:1rem;">{{ result.goal }}</div>
+                <div class="r-label">Your Goal</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="font-size:1rem;">{{ result.experience }}</div>
+                <div class="r-label">Experience</div>
+            </div>
+        </div>
+        <h3 style="font-family:'Rajdhani',sans-serif;font-size:1.1rem;color:#00bfff;
+                   letter-spacing:1px;margin-bottom:0.75rem;">📋 Your Workout Plan</h3>
+        <div class="exercise-list">
+            {% for exercise in result.exercises %}
+            <div class="exercise-item">{{ exercise }}</div>
+            {% endfor %}
+        </div>
+        <p style="margin-top:1rem;color:#a0a0b0;font-size:0.85rem;">
+            ⏸️ Rest: <span style="color:#ffd700;">{{ result.rest }}</span>
+        </p>
+        <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="/tracker" class="btn btn-primary">📝 Log This Workout</a>
+            <a href="/diet" class="btn" style="background:rgba(199,125,255,0.1);color:#c77dff;
+               border:1px solid rgba(199,125,255,0.3);">🥗 Get Diet Plan</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- ── Goal Preview Cards (shown when no result yet) ──────────────────── -->
+    {% if not result %}
+
+    <!-- Live Goal Info Panel -->
+    <div style="margin-top:2rem;background:linear-gradient(135deg,rgba(0,255,136,0.05),rgba(0,191,255,0.04));
+                border:1px solid rgba(0,255,136,0.2);border-radius:20px;padding:2rem;"
+         id="goal-info-panel">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+            <div style="font-size:2.5rem;" id="gi-icon">🔥</div>
+            <div>
+                <div style="font-family:'Orbitron',sans-serif;color:#00ff88;font-size:1.1rem;font-weight:700;"
+                     id="gi-title">Weight Loss Plan</div>
+                <div style="color:#8888aa;font-size:0.85rem;margin-top:0.2rem;"
+                     id="gi-subtitle">Burn fat, boost metabolism, reshape your body</div>
+            </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem;">
+            <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.4rem;margin-bottom:0.3rem;">⏱️</div>
+                <div style="font-family:'Orbitron',sans-serif;color:#00ff88;font-size:1rem;"
+                     id="gi-duration">30–45 min</div>
+                <div style="color:#555;font-size:0.7rem;text-transform:uppercase;
+                            letter-spacing:1px;margin-top:0.2rem;">Session Length</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.4rem;margin-bottom:0.3rem;">📅</div>
+                <div style="font-family:'Orbitron',sans-serif;color:#00bfff;font-size:1rem;"
+                     id="gi-days">4–5x / week</div>
+                <div style="color:#555;font-size:0.7rem;text-transform:uppercase;
+                            letter-spacing:1px;margin-top:0.2rem;">Frequency</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.4rem;margin-bottom:0.3rem;">🔥</div>
+                <div style="font-family:'Orbitron',sans-serif;color:#ff6b6b;font-size:1rem;"
+                     id="gi-cal">300–500 cal</div>
+                <div style="color:#555;font-size:0.7rem;text-transform:uppercase;
+                            letter-spacing:1px;margin-top:0.2rem;">Avg Burn</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.4rem;margin-bottom:0.3rem;">📈</div>
+                <div style="font-family:'Orbitron',sans-serif;color:#ffd700;font-size:1rem;"
+                     id="gi-result">8–12 weeks</div>
+                <div style="color:#555;font-size:0.7rem;text-transform:uppercase;
+                            letter-spacing:1px;margin-top:0.2rem;">Visible Results</div>
+            </div>
+        </div>
+        <!-- Key Tips -->
+        <div>
+            <div style="font-family:'Rajdhani',sans-serif;color:#a0a0b0;font-size:0.75rem;
+                        letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;">
+                Key Tips for Your Goal
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;" id="gi-tips">
+            </div>
+        </div>
+    </div>
+
+    <!-- Goal Comparison Strip -->
+    <div style="margin-top:1.5rem;">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;letter-spacing:3px;
+                    color:#555;text-transform:uppercase;margin-bottom:1rem;">
+            Compare All Goals
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;">
+            {% for icon, label, color, val in [
+                ('🔥','Weight Loss','#ff6b6b','High Burn'),
+                ('💪','Muscle Gain','#00ff88','Strength'),
+                ('🚴','Endurance','#00bfff','Stamina'),
+                ('🧘','Flexibility','#c77dff','Mobility'),
+                ('⚡','General Fit','#ffd700','Balanced')
+            ] %}
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                        border-radius:12px;padding:1rem;text-align:center;cursor:pointer;
+                        transition:all 0.2s;"
+                 onmouseover="this.style.borderColor='{{ color }}';this.style.background='rgba(255,255,255,0.05)'"
+                 onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.background='rgba(255,255,255,0.02)'">
+                <div style="font-size:1.4rem;margin-bottom:0.4rem;">{{ icon }}</div>
+                <div style="font-family:'Rajdhani',sans-serif;color:{{ color }};font-size:0.85rem;
+                            font-weight:700;">{{ label }}</div>
+                <div style="color:#555;font-size:0.7rem;margin-top:0.2rem;">{{ val }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endif %}
+
+</div>
+
+<!-- ── Goal Info JavaScript ───────────────────────────────────────────────── -->
+<script>
+const goalData = {
+    weight_loss: {
+        icon: '🔥', title: 'Weight Loss Plan',
+        subtitle: 'Burn fat, boost metabolism, reshape your body',
+        duration: '30–45 min', days: '4–5x / week', cal: '300–500 cal', result: '8–12 weeks',
+        tips: [
+            '🥤 Drink water before every meal to reduce appetite',
+            '🚫 Cut processed sugar and refined carbs first',
+            '🏃 Combine cardio with strength for maximum fat burn',
+            '😴 Sleep 7–8 hrs — poor sleep increases hunger hormones'
+        ]
+    },
+    muscle_gain: {
+        icon: '💪', title: 'Muscle Gain Plan',
+        subtitle: 'Build strength, add mass, sculpt your physique',
+        duration: '45–60 min', days: '4–5x / week', cal: '250–400 cal', result: '12–16 weeks',
+        tips: [
+            '🥩 Eat 1.6–2.2g protein per kg of bodyweight daily',
+            '📈 Progressive overload — increase weight weekly',
+            '😴 Muscles grow during rest, not during the workout',
+            '🍚 Eat in a slight calorie surplus (300 cal above maintenance)'
+        ]
+    },
+    endurance: {
+        icon: '🚴', title: 'Endurance Plan',
+        subtitle: 'Build cardiovascular stamina and mental toughness',
+        duration: '45–90 min', days: '5–6x / week', cal: '400–700 cal', result: '6–10 weeks',
+        tips: [
+            '🍌 Carb-load 2–3 hours before long sessions',
+            '💧 Hydrate consistently — not just when thirsty',
+            '📉 Build mileage slowly — max 10% increase per week',
+            '🎯 Mix steady-state cardio with interval training'
+        ]
+    },
+    flexibility: {
+        icon: '🧘', title: 'Flexibility Plan',
+        subtitle: 'Improve range of motion, reduce injury risk',
+        duration: '30–60 min', days: '6–7x / week', cal: '150–250 cal', result: '4–8 weeks',
+        tips: [
+            '🌡️ Always warm up before deep stretching',
+            '⏱️ Hold each stretch for minimum 30–45 seconds',
+            '🫁 Breathe deeply into each stretch — never hold breath',
+            '🌙 Evening sessions are best — body is warmest then'
+        ]
+    },
+    general_fitness: {
+        icon: '⚡', title: 'General Fitness Plan',
+        subtitle: 'Build a balanced, healthy and active lifestyle',
+        duration: '30–45 min', days: '3–4x / week', cal: '200–400 cal', result: '6–8 weeks',
+        tips: [
+            '⚖️ Balance cardio, strength, and flexibility equally',
+            '🎯 Set one small weekly goal to stay consistent',
+            '🚶 Add 8,000+ daily steps even on rest days',
+            '📱 Track progress — what gets measured gets improved'
+        ]
+    }
+};
+
+function updateGoalInfo() {
+    const goal = document.getElementById('goal-select').value;
+    const d = goalData[goal];
+    if (!d) return;
+
+    document.getElementById('gi-icon').textContent    = d.icon;
+    document.getElementById('gi-title').textContent   = d.title;
+    document.getElementById('gi-subtitle').textContent = d.subtitle;
+    document.getElementById('gi-duration').textContent = d.duration;
+    document.getElementById('gi-days').textContent    = d.days;
+    document.getElementById('gi-cal').textContent     = d.cal;
+    document.getElementById('gi-result').textContent  = d.result;
+
+    const tipsEl = document.getElementById('gi-tips');
+    tipsEl.innerHTML = d.tips.map(t => `
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;
+                    background:rgba(0,0,0,0.25);border-radius:8px;padding:0.6rem 0.9rem;">
+            <span style="font-size:0.9rem;">${t.split(' ')[0]}</span>
+            <span style="color:#a0a0b0;font-size:0.85rem;line-height:1.5;">
+                ${t.split(' ').slice(1).join(' ')}
+            </span>
+        </div>`
+    ).join('');
+}
+
+// Run on page load to populate default (weight_loss)
+updateGoalInfo();
+</script>
+
+{% endblock %}

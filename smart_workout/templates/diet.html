@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %}Diet Suggestions{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding: 3rem 0 1rem;">
+        <h1 class="page-title">🥗 Diet Suggestions</h1>
+        <p class="page-subtitle">
+            Get personalized nutrition recommendations based on your body stats and fitness goal.
+            Powered by the Mifflin-St Jeor TDEE formula.
+        </p>
+    </div>
+
+    <!-- ── Input Form ─────────────────────────────────────────────────────── -->
+    <div class="card">
+        <h2 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; color:#a0a0b0;
+                   letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem;">
+            Your Profile
+        </h2>
+        
+        <form method="POST" action="/diet">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Age (years)</label>
+                    <input type="number" name="age" min="10" max="100" placeholder="e.g. 25" required>
+                </div>
+                <div class="form-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" name="weight" step="0.1" placeholder="e.g. 70.5" required>
+                </div>
+                <div class="form-group">
+                    <label>Height (cm)</label>
+                    <input type="number" name="height" step="0.1" placeholder="e.g. 175" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Fitness Goal</label>
+                    <select name="goal" required>
+                        <option value="weight_loss">🔥 Weight Loss</option>
+                        <option value="muscle_gain">💪 Muscle Gain</option>
+                        <option value="endurance">🚴 Endurance</option>
+                        <option value="flexibility">🧘 Flexibility</option>
+                        <option value="general_fitness">⚡ General Fitness</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">🥗 Generate Diet Plan</button>
+        </form>
+    </div>
+
+    <!-- ── Diet Results ───────────────────────────────────────────────────── -->
+    {% if result %}
+    <div class="result-box" style="border-color:rgba(199,125,255,0.3);">
+        <h2 class="result-title" style="color:#c77dff;">
+            🥗 Your Personalized Diet Plan — {{ result.goal }}
+        </h2>
+        
+        <!-- Calorie & Macro Targets -->
+        <h3 style="font-family:'Rajdhani',sans-serif; color:#a0a0b0; letter-spacing:1px;
+                   text-transform:uppercase; font-size:0.9rem; margin-bottom:1rem;">
+            Daily Targets
+        </h3>
+        
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="r-value" style="color:#ff6b6b;">{{ result.target_calories }}</div>
+                <div class="r-label">Target Calories</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="color:#00ff88;">{{ result.protein_g }}g</div>
+                <div class="r-label">Protein</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="color:#ffd700;">{{ result.carbs_g }}g</div>
+                <div class="r-label">Carbohydrates</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="color:#00bfff;">{{ result.fat_g }}g</div>
+                <div class="r-label">Healthy Fats</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="color:#c77dff;">{{ result.bmr }}</div>
+                <div class="r-label">BMR (kcal)</div>
+            </div>
+            <div class="result-item">
+                <div class="r-value" style="color:#00bfff;">{{ result.water_liters }}L</div>
+                <div class="r-label">Water / Day</div>
+            </div>
+        </div>
+        
+        <!-- Macro Progress Bars -->
+        <div style="margin-bottom:2rem;">
+            {% set total_macros = result.protein_g * 4 + result.carbs_g * 4 + result.fat_g * 9 %}
+            {% set p_pct = ((result.protein_g * 4) / total_macros * 100)|round %}
+            {% set c_pct = ((result.carbs_g * 4) / total_macros * 100)|round %}
+            {% set f_pct = ((result.fat_g * 9) / total_macros * 100)|round %}
+            
+            {% for label, pct, color in [('Protein', p_pct, '#00ff88'), ('Carbs', c_pct, '#ffd700'), ('Fats', f_pct, '#00bfff')] %}
+            <div style="margin-bottom:0.75rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                    <span style="font-size:0.85rem; color:#a0a0b0;">{{ label }}</span>
+                    <span style="font-size:0.85rem; color:{{ color }};">{{ pct }}%</span>
+                </div>
+                <div style="background:#1a1a2e; border-radius:20px; height:8px; overflow:hidden;">
+                    <div style="background:{{ color }}; width:{{ pct }}%; height:100%; border-radius:20px;
+                                box-shadow: 0 0 10px {{ color }}40; transition: width 1s ease;"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Meal Plan -->
+        <h3 style="font-family:'Rajdhani',sans-serif; color:#c77dff; letter-spacing:1px;
+                   margin-bottom:1rem;">📋 Sample Meal Plan</h3>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem;">
+            {% for meal_name, emoji, items in [
+                ('Breakfast', '🌅', result.breakfast),
+                ('Lunch', '☀️', result.lunch),
+                ('Dinner', '🌙', result.dinner),
+                ('Snacks', '🍎', result.snacks)
+            ] %}
+            <div style="background:var(--bg-card2); border:1px solid rgba(199,125,255,0.15);
+                        border-radius:12px; padding:1.2rem;">
+                <h4 style="color:#c77dff; font-family:'Rajdhani',sans-serif;
+                           margin-bottom:0.75rem;">{{ emoji }} {{ meal_name }}</h4>
+                {% for item in items %}
+                <div style="font-size:0.85rem; color:#a0a0b0; padding:0.3rem 0;
+                            border-bottom:1px solid rgba(255,255,255,0.04);
+                            display:flex; align-items:center; gap:0.5rem;">
+                    <span style="color:#c77dff; font-size:0.6rem;">●</span>
+                    {{ item }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pro Tip -->
+        <div style="margin-top:1.5rem; background:rgba(199,125,255,0.08);
+                    border:1px solid rgba(199,125,255,0.2); border-radius:10px;
+                    padding:1rem 1.5rem;">
+            <p style="color:#c77dff; font-size:0.9rem;">
+                💡 <strong>Pro Tip:</strong> {{ result.tip }}
+            </p>
+        </div>
+        
+        <!-- BMI Info -->
+        <div style="margin-top:1rem; display:flex; gap:0.5rem; align-items:center;">
+            <span style="font-size:0.85rem; color:#a0a0b0;">Your BMI:</span>
+            <span style="font-family:'Orbitron',sans-serif; color:#00ff88;">{{ result.bmi }}</span>
+            {% if result.bmi < 18.5 %}
+            <span style="color:#ffd700; font-size:0.8rem;">— Underweight</span>
+            {% elif result.bmi < 25 %}
+            <span style="color:#00ff88; font-size:0.8rem;">— Normal ✓</span>
+            {% elif result.bmi < 30 %}
+            <span style="color:#ff9a3c; font-size:0.8rem;">— Overweight</span>
+            {% else %}
+            <span style="color:#ff4757; font-size:0.8rem;">— Obese</span>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

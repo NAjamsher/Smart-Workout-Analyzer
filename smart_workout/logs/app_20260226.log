@@ -1,0 +1,209 @@
+2026-02-26 11:22:10,288 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 11:22:10,288 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 11:22:10,290 | INFO |  * Restarting with stat
+2026-02-26 11:22:11,677 | WARNING |  * Debugger is active!
+2026-02-26 11:22:11,681 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 11:22:18,598 | INFO | Home page visited
+2026-02-26 11:22:18,625 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:18] "GET / HTTP/1.1" 200 -
+2026-02-26 11:22:18,977 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-26 11:22:26,477 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:26] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:22:28,519 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:28] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:22:30,005 | INFO | Dashboard loaded: 0 workouts
+2026-02-26 11:22:30,014 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 11:22:31,021 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:31] "GET /diet HTTP/1.1" 200 -
+2026-02-26 11:22:32,208 | INFO | Home page visited
+2026-02-26 11:22:32,209 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:32] "GET / HTTP/1.1" 200 -
+2026-02-26 11:22:38,598 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:38] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:22:46,935 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:46] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:22:52,689 | INFO | Dashboard loaded: 0 workouts
+2026-02-26 11:22:52,690 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:52] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 11:22:58,745 | INFO | 127.0.0.1 - - [26/Feb/2026 11:22:58] "GET /diet HTTP/1.1" 200 -
+2026-02-26 11:23:03,668 | INFO | Home page visited
+2026-02-26 11:23:03,669 | INFO | 127.0.0.1 - - [26/Feb/2026 11:23:03] "GET / HTTP/1.1" 200 -
+2026-02-26 11:23:07,267 | INFO | Dashboard loaded: 0 workouts
+2026-02-26 11:23:07,269 | INFO | 127.0.0.1 - - [26/Feb/2026 11:23:07] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 11:23:10,097 | INFO | Home page visited
+2026-02-26 11:23:10,098 | INFO | 127.0.0.1 - - [26/Feb/2026 11:23:10] "GET / HTTP/1.1" 200 -
+2026-02-26 11:23:14,604 | INFO | 127.0.0.1 - - [26/Feb/2026 11:23:14] "GET /diet HTTP/1.1" 200 -
+2026-02-26 11:23:17,833 | INFO | Home page visited
+2026-02-26 11:23:17,834 | INFO | 127.0.0.1 - - [26/Feb/2026 11:23:17] "GET / HTTP/1.1" 200 -
+2026-02-26 11:26:31,643 | INFO | 127.0.0.1 - - [26/Feb/2026 11:26:31] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:27:41,842 | INFO | Prediction: age=21, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-02-26 11:27:41,875 | INFO | 127.0.0.1 - - [26/Feb/2026 11:27:41] "POST /analyzer HTTP/1.1" 200 -
+2026-02-26 11:29:56,667 | INFO | Prediction: age=25, goal=weight_loss, exp=beginner \u2192 Cardio + HIIT
+2026-02-26 11:29:56,669 | INFO | 127.0.0.1 - - [26/Feb/2026 11:29:56] "POST /analyzer HTTP/1.1" 200 -
+2026-02-26 11:30:31,165 | INFO | 127.0.0.1 - - [26/Feb/2026 11:30:31] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:30:51,839 | INFO | 127.0.0.1 - - [26/Feb/2026 11:30:51] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:30:58,822 | INFO | 127.0.0.1 - - [26/Feb/2026 11:30:58] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:31:01,377 | INFO | 127.0.0.1 - - [26/Feb/2026 11:31:01] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:31:17,854 | INFO | Dashboard loaded: 0 workouts
+2026-02-26 11:31:17,855 | INFO | 127.0.0.1 - - [26/Feb/2026 11:31:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 11:31:19,708 | INFO | 127.0.0.1 - - [26/Feb/2026 11:31:19] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:31:25,393 | INFO | 127.0.0.1 - - [26/Feb/2026 11:31:25] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:31:46,271 | INFO | Prediction: age=25, goal=weight_loss, exp=beginner \u2192 Cardio + HIIT
+2026-02-26 11:31:46,273 | INFO | 127.0.0.1 - - [26/Feb/2026 11:31:46] "POST /analyzer HTTP/1.1" 200 -
+2026-02-26 11:33:27,606 | INFO | 127.0.0.1 - - [26/Feb/2026 11:33:27] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:33:54,815 | INFO | Workout added: Cardio + HIIT on 2026-02-26
+2026-02-26 11:33:54,818 | INFO | 127.0.0.1 - - [26/Feb/2026 11:33:54] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-02-26 11:33:54,835 | INFO | 127.0.0.1 - - [26/Feb/2026 11:33:54] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:34:00,198 | INFO | Dashboard loaded: 1 workouts
+2026-02-26 11:34:00,200 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 11:34:05,039 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:05] "GET /diet HTTP/1.1" 200 -
+2026-02-26 11:34:05,925 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:05] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:34:12,023 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:12] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 11:34:39,867 | INFO | Home page visited
+2026-02-26 11:34:39,869 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:39] "GET / HTTP/1.1" 200 -
+2026-02-26 11:34:43,635 | INFO | Home page visited
+2026-02-26 11:34:43,636 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:43] "GET / HTTP/1.1" 200 -
+2026-02-26 11:34:47,696 | INFO | Dashboard loaded: 1 workouts
+2026-02-26 11:34:47,698 | INFO | 127.0.0.1 - - [26/Feb/2026 11:34:47] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 11:35:05,977 | INFO | 127.0.0.1 - - [26/Feb/2026 11:35:05] "GET /diet HTTP/1.1" 200 -
+2026-02-26 11:35:24,389 | INFO | Diet plan generated: goal=muscle_gain
+2026-02-26 11:35:24,390 | INFO | 127.0.0.1 - - [26/Feb/2026 11:35:24] "POST /diet HTTP/1.1" 200 -
+2026-02-26 11:36:07,867 | INFO | Home page visited
+2026-02-26 11:36:07,868 | INFO | 127.0.0.1 - - [26/Feb/2026 11:36:07] "GET / HTTP/1.1" 200 -
+2026-02-26 11:36:08,792 | INFO | 127.0.0.1 - - [26/Feb/2026 11:36:08] "GET /diet HTTP/1.1" 200 -
+2026-02-26 11:36:11,166 | INFO | 127.0.0.1 - - [26/Feb/2026 11:36:11] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 11:36:12,131 | INFO | Home page visited
+2026-02-26 11:36:12,132 | INFO | 127.0.0.1 - - [26/Feb/2026 11:36:12] "GET / HTTP/1.1" 200 -
+2026-02-26 11:43:18,098 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 11:43:18,098 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 11:43:18,099 | INFO |  * Restarting with stat
+2026-02-26 11:43:19,414 | WARNING |  * Debugger is active!
+2026-02-26 11:43:19,417 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 11:43:24,667 | INFO | Home page visited
+2026-02-26 11:43:24,682 | INFO | 127.0.0.1 - - [26/Feb/2026 11:43:24] "GET / HTTP/1.1" 200 -
+2026-02-26 11:43:24,941 | INFO | 127.0.0.1 - - [26/Feb/2026 11:43:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-26 11:43:27,399 | INFO | Home page visited
+2026-02-26 11:43:27,401 | INFO | 127.0.0.1 - - [26/Feb/2026 11:43:27] "GET / HTTP/1.1" 200 -
+2026-02-26 16:36:51,859 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 16:36:51,859 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 16:36:51,862 | INFO |  * Restarting with stat
+2026-02-26 16:36:52,939 | WARNING |  * Debugger is active!
+2026-02-26 16:36:52,942 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 16:36:56,517 | INFO | Home page visited
+2026-02-26 16:36:56,566 | INFO | 127.0.0.1 - - [26/Feb/2026 16:36:56] "GET / HTTP/1.1" 200 -
+2026-02-26 16:36:56,714 | INFO | 127.0.0.1 - - [26/Feb/2026 16:36:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-26 16:49:17,441 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 16:49:17,441 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 16:49:17,443 | INFO |  * Restarting with stat
+2026-02-26 16:49:18,496 | WARNING |  * Debugger is active!
+2026-02-26 16:49:18,498 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 16:49:21,953 | INFO | Home page visited
+2026-02-26 16:49:21,965 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:21] "GET / HTTP/1.1" 200 -
+2026-02-26 16:49:22,007 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:22] "[33mGET /static/images/my_photo.jpg HTTP/1.1[0m" 404 -
+2026-02-26 16:49:26,649 | INFO | Home page visited
+2026-02-26 16:49:26,650 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:26] "GET / HTTP/1.1" 200 -
+2026-02-26 16:49:26,666 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:26] "[33mGET /static/images/my_photo.jpg HTTP/1.1[0m" 404 -
+2026-02-26 16:49:32,514 | INFO | Home page visited
+2026-02-26 16:49:32,515 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:32] "GET / HTTP/1.1" 200 -
+2026-02-26 16:49:32,535 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:32] "[33mGET /static/images/my_photo.jpg HTTP/1.1[0m" 404 -
+2026-02-26 16:49:32,943 | INFO | Home page visited
+2026-02-26 16:49:32,944 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:32] "GET / HTTP/1.1" 200 -
+2026-02-26 16:49:32,958 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:32] "[33mGET /static/images/my_photo.jpg HTTP/1.1[0m" 404 -
+2026-02-26 16:49:33,089 | INFO | Home page visited
+2026-02-26 16:49:33,089 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:33] "GET / HTTP/1.1" 200 -
+2026-02-26 16:49:33,099 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:33] "[33mGET /static/images/my_photo.jpg HTTP/1.1[0m" 404 -
+2026-02-26 16:49:33,240 | INFO | Home page visited
+2026-02-26 16:49:33,240 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:33] "GET / HTTP/1.1" 200 -
+2026-02-26 16:49:33,255 | INFO | 127.0.0.1 - - [26/Feb/2026 16:49:33] "[33mGET /static/images/my_photo.jpg HTTP/1.1[0m" 404 -
+2026-02-26 16:54:19,947 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 16:54:19,948 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 16:54:19,949 | INFO |  * Restarting with stat
+2026-02-26 16:54:21,075 | WARNING |  * Debugger is active!
+2026-02-26 16:54:21,077 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 16:54:24,774 | INFO | Home page visited
+2026-02-26 16:54:24,786 | INFO | 127.0.0.1 - - [26/Feb/2026 16:54:24] "GET / HTTP/1.1" 200 -
+2026-02-26 16:54:24,866 | INFO | 127.0.0.1 - - [26/Feb/2026 16:54:24] "GET /static/images/my_photo.jpg HTTP/1.1" 200 -
+2026-02-26 16:55:08,493 | INFO | Home page visited
+2026-02-26 16:55:08,494 | INFO | 127.0.0.1 - - [26/Feb/2026 16:55:08] "GET / HTTP/1.1" 200 -
+2026-02-26 16:55:08,514 | INFO | 127.0.0.1 - - [26/Feb/2026 16:55:08] "[36mGET /static/images/my_photo.jpg HTTP/1.1[0m" 304 -
+2026-02-26 16:55:11,102 | INFO | 127.0.0.1 - - [26/Feb/2026 16:55:11] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 17:41:46,140 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 17:41:46,140 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 17:41:46,142 | INFO |  * Restarting with stat
+2026-02-26 17:41:47,233 | WARNING |  * Debugger is active!
+2026-02-26 17:41:47,234 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 17:41:49,522 | INFO | Home page visited
+2026-02-26 17:41:49,548 | INFO | 127.0.0.1 - - [26/Feb/2026 17:41:49] "GET / HTTP/1.1" 200 -
+2026-02-26 17:42:40,041 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 17:42:40,041 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 17:42:40,043 | INFO |  * Restarting with stat
+2026-02-26 17:42:41,010 | WARNING |  * Debugger is active!
+2026-02-26 17:42:41,011 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 17:42:42,183 | INFO | Home page visited
+2026-02-26 17:42:42,196 | INFO | 127.0.0.1 - - [26/Feb/2026 17:42:42] "GET / HTTP/1.1" 200 -
+2026-02-26 17:42:47,152 | INFO | Home page visited
+2026-02-26 17:42:47,153 | INFO | 127.0.0.1 - - [26/Feb/2026 17:42:47] "GET / HTTP/1.1" 200 -
+2026-02-26 17:54:22,999 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-26 17:54:22,999 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-26 17:54:23,000 | INFO |  * Restarting with stat
+2026-02-26 17:54:24,070 | WARNING |  * Debugger is active!
+2026-02-26 17:54:24,071 | INFO |  * Debugger PIN: 433-719-920
+2026-02-26 17:54:26,790 | INFO | Home page visited
+2026-02-26 17:54:26,813 | INFO | 127.0.0.1 - - [26/Feb/2026 17:54:26] "GET / HTTP/1.1" 200 -
+2026-02-26 17:55:02,410 | INFO | Home page visited
+2026-02-26 17:55:02,412 | INFO | 127.0.0.1 - - [26/Feb/2026 17:55:02] "GET / HTTP/1.1" 200 -
+2026-02-26 17:56:02,757 | INFO | 127.0.0.1 - - [26/Feb/2026 17:56:02] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 17:57:43,550 | INFO | Home page visited
+2026-02-26 17:57:43,551 | INFO | 127.0.0.1 - - [26/Feb/2026 17:57:43] "GET / HTTP/1.1" 200 -
+2026-02-26 17:57:56,967 | INFO | Dashboard loaded: 1 workouts
+2026-02-26 17:57:56,983 | INFO | 127.0.0.1 - - [26/Feb/2026 17:57:56] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 18:03:40,351 | INFO | Home page visited
+2026-02-26 18:03:40,352 | INFO | 127.0.0.1 - - [26/Feb/2026 18:03:40] "GET / HTTP/1.1" 200 -
+2026-02-26 18:03:52,653 | INFO | 127.0.0.1 - - [26/Feb/2026 18:03:52] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 18:04:00,631 | INFO | Dashboard loaded: 1 workouts
+2026-02-26 18:04:00,632 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 18:04:01,936 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:01] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 18:04:02,905 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:02] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 18:04:03,658 | INFO | Home page visited
+2026-02-26 18:04:03,658 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:03] "GET / HTTP/1.1" 200 -
+2026-02-26 18:04:06,035 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:06] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 18:04:10,385 | INFO | Home page visited
+2026-02-26 18:04:10,385 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:10] "GET / HTTP/1.1" 200 -
+2026-02-26 18:04:13,987 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:13] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 18:04:21,371 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:21] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 18:04:24,779 | INFO | Dashboard loaded: 1 workouts
+2026-02-26 18:04:24,780 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:24] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 18:04:30,861 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:30] "GET /diet HTTP/1.1" 200 -
+2026-02-26 18:04:32,609 | INFO | Home page visited
+2026-02-26 18:04:32,610 | INFO | 127.0.0.1 - - [26/Feb/2026 18:04:32] "GET / HTTP/1.1" 200 -
+2026-02-26 18:06:24,372 | INFO | Home page visited
+2026-02-26 18:06:24,413 | INFO | 127.0.0.1 - - [26/Feb/2026 18:06:24] "GET / HTTP/1.1" 200 -
+2026-02-26 18:10:06,752 | INFO | Home page visited
+2026-02-26 18:10:06,792 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:06] "GET / HTTP/1.1" 200 -
+2026-02-26 18:10:37,920 | INFO | Home page visited
+2026-02-26 18:10:37,921 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:37] "GET / HTTP/1.1" 200 -
+2026-02-26 18:10:44,304 | INFO | Home page visited
+2026-02-26 18:10:44,304 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:44] "GET / HTTP/1.1" 200 -
+2026-02-26 18:10:47,028 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:47] "GET /analyzer HTTP/1.1" 200 -
+2026-02-26 18:10:48,027 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:48] "GET /tracker HTTP/1.1" 200 -
+2026-02-26 18:10:49,195 | INFO | Dashboard loaded: 1 workouts
+2026-02-26 18:10:49,196 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:49] "GET /dashboard HTTP/1.1" 200 -
+2026-02-26 18:10:49,523 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:49] "GET /diet HTTP/1.1" 200 -
+2026-02-26 18:10:50,578 | INFO | Home page visited
+2026-02-26 18:10:50,579 | INFO | 127.0.0.1 - - [26/Feb/2026 18:10:50] "GET / HTTP/1.1" 200 -

@@ -1,0 +1,90 @@
+2026-04-17 01:17:49,914 | INFO | ============================================================
+2026-04-17 01:17:49,915 | INFO |   STARTING ETL PIPELINE
+2026-04-17 01:17:49,915 | INFO | ============================================================
+2026-04-17 01:17:49,916 | INFO | [EXTRACT] Reading raw data from: data/raw/workout_data.csv
+2026-04-17 01:17:49,944 | INFO | [EXTRACT] Loaded 2000 rows and 11 columns
+2026-04-17 01:17:49,945 | INFO | [VALIDATE] Running data validation checks...
+2026-04-17 01:17:50,023 | INFO | [TRANSFORM] Cleaning and transforming data...
+2026-04-17 01:17:50,037 | INFO | [TRANSFORM] Removed 0 duplicate rows
+2026-04-17 01:17:50,079 | INFO | [LOAD] Saving processed data...
+2026-04-17 01:17:50,118 | INFO | [LOAD] Final dataset: 2000 rows × 14 columns
+2026-04-17 01:17:50,122 | INFO | ============================================================
+2026-04-17 01:18:03,716 | INFO | ============================================================
+2026-04-17 01:18:03,718 | INFO |   STARTING MODEL TRAINING
+2026-04-17 01:18:03,718 | INFO | ============================================================
+2026-04-17 01:18:03,719 | INFO | Loading data from data/processed/workout_processed.csv
+2026-04-17 01:18:03,748 | INFO | Loaded 2000 rows
+2026-04-17 01:18:03,748 | INFO | Encoding categorical features...
+2026-04-17 01:18:03,751 | INFO |   Encoded 'gender': ['female', 'male']
+2026-04-17 01:18:03,753 | INFO |   Encoded 'experience': ['advanced', 'beginner', 'intermediate']
+2026-04-17 01:18:03,755 | INFO |   Encoded 'goal': ['endurance', 'flexibility', 'general_fitness', 'muscle_gain', 'weight_loss']
+2026-04-17 01:18:03,757 | INFO |   Encoded 'workout_type': ['Cardio + HIIT', 'Mixed Training', 'Running + Cycling', 'Strength Training', 'Yoga + Stretching']
+2026-04-17 01:18:03,771 | INFO | Train size: 1600 | Test size: 400
+2026-04-17 01:18:04,358 | INFO |   Accuracy: 0.9850 (98.50%)
+2026-04-17 01:18:04,368 | INFO |   Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       123
+           1       0.91      1.00      0.95        61
+           2       1.00      1.00      1.00        80
+           3       1.00      1.00      1.00       100
+           4       1.00      0.83      0.91        36
+
+    accuracy                           0.98       400
+   macro avg       0.98      0.97      0.97       400
+weighted avg       0.99      0.98      0.98       400
+
+2026-04-17 01:18:06,891 | INFO |   Cross-validation (5-fold): 0.9963 ± 0.0075
+2026-04-17 01:18:07,621 | INFO |   MAE  (Mean Absolute Error): 140.06 calories
+2026-04-17 01:18:07,622 | INFO |   RMSE (Root Mean Sq Error):  175.19 calories
+2026-04-17 01:18:07,622 | INFO |   R²   (Explained Variance):  -0.1099
+2026-04-17 01:18:07,667 | INFO |   models/workout_classifier.pkl
+2026-04-17 01:18:07,668 | INFO |   models/calorie_predictor.pkl
+2026-04-17 01:18:07,668 | INFO |   models/encoders.pkl
+2026-04-17 01:18:07,672 | INFO |    Classifier Accuracy: 98.50%
+2026-04-17 01:18:07,673 | INFO |    Calorie MAE: 140.06 | R²: -0.1099
+2026-04-17 09:47:06,015 | INFO | ============================================================
+2026-04-17 09:47:06,016 | INFO |   STARTING ETL PIPELINE
+2026-04-17 09:47:06,016 | INFO | ============================================================
+2026-04-17 09:47:06,016 | INFO | [EXTRACT] Reading raw data from: data/raw/workout_data.csv
+2026-04-17 09:47:06,041 | INFO | [EXTRACT] Loaded 2000 rows and 11 columns
+2026-04-17 09:47:06,042 | INFO | [VALIDATE] Running data validation checks...
+2026-04-17 09:47:06,083 | INFO | [TRANSFORM] Cleaning and transforming data...
+2026-04-17 09:47:06,091 | INFO | [TRANSFORM] Removed 0 duplicate rows
+2026-04-17 09:47:06,115 | INFO | [LOAD] Saving processed data...
+2026-04-17 09:47:06,143 | INFO | [LOAD] Final dataset: 2000 rows × 14 columns
+2026-04-17 09:47:06,145 | INFO | ============================================================
+2026-04-17 09:47:16,536 | INFO | ============================================================
+2026-04-17 09:47:16,536 | INFO |   STARTING MODEL TRAINING
+2026-04-17 09:47:16,536 | INFO | ============================================================
+2026-04-17 09:47:16,536 | INFO | Loading data from data/processed/workout_processed.csv
+2026-04-17 09:47:16,553 | INFO | Loaded 2000 rows
+2026-04-17 09:47:16,554 | INFO | Encoding categorical features...
+2026-04-17 09:47:16,555 | INFO |   Encoded 'gender': ['female', 'male']
+2026-04-17 09:47:16,556 | INFO |   Encoded 'experience': ['advanced', 'beginner', 'intermediate']
+2026-04-17 09:47:16,557 | INFO |   Encoded 'goal': ['endurance', 'flexibility', 'general_fitness', 'muscle_gain', 'weight_loss']
+2026-04-17 09:47:16,557 | INFO |   Encoded 'workout_type': ['Cardio + HIIT', 'Mixed Training', 'Running + Cycling', 'Strength Training', 'Yoga + Stretching']
+2026-04-17 09:47:16,566 | INFO | Train size: 1600 | Test size: 400
+2026-04-17 09:47:16,855 | INFO |   Accuracy: 0.9850 (98.50%)
+2026-04-17 09:47:16,862 | INFO |   Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       123
+           1       0.91      1.00      0.95        61
+           2       1.00      1.00      1.00        80
+           3       1.00      1.00      1.00       100
+           4       1.00      0.83      0.91        36
+
+    accuracy                           0.98       400
+   macro avg       0.98      0.97      0.97       400
+weighted avg       0.99      0.98      0.98       400
+
+2026-04-17 09:47:17,977 | INFO |   Cross-validation (5-fold): 0.9963 ± 0.0075
+2026-04-17 09:47:18,561 | INFO |   MAE  (Mean Absolute Error): 140.06 calories
+2026-04-17 09:47:18,562 | INFO |   RMSE (Root Mean Sq Error):  175.19 calories
+2026-04-17 09:47:18,562 | INFO |   R²   (Explained Variance):  -0.1099
+2026-04-17 09:47:18,631 | INFO |   models/workout_classifier.pkl
+2026-04-17 09:47:18,631 | INFO |   models/calorie_predictor.pkl
+2026-04-17 09:47:18,631 | INFO |   models/encoders.pkl
+2026-04-17 09:47:18,633 | INFO |    Classifier Accuracy: 98.50%
+2026-04-17 09:47:18,633 | INFO |    Calorie MAE: 140.06 | R²: -0.1099

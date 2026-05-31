@@ -1,0 +1,20 @@
+2026-05-31 11:59:47,951 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.180.181:5000
+2026-05-31 11:59:47,952 | INFO | [33mPress CTRL+C to quit[0m
+2026-05-31 11:59:47,954 | INFO |  * Restarting with stat
+2026-05-31 11:59:49,019 | WARNING |  * Debugger is active!
+2026-05-31 11:59:49,022 | INFO |  * Debugger PIN: 433-719-920
+2026-05-31 11:59:54,998 | INFO | Home page visited
+2026-05-31 11:59:55,094 | INFO | 127.0.0.1 - - [31/May/2026 11:59:55] "GET / HTTP/1.1" 200 -
+2026-05-31 11:59:55,616 | INFO | 127.0.0.1 - - [31/May/2026 11:59:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-31 12:00:15,655 | INFO | 127.0.0.1 - - [31/May/2026 12:00:15] "GET /analyzer HTTP/1.1" 200 -
+2026-05-31 12:00:47,858 | INFO | Home page visited
+2026-05-31 12:00:47,859 | INFO | 127.0.0.1 - - [31/May/2026 12:00:47] "GET / HTTP/1.1" 200 -
+2026-05-31 12:02:26,733 | INFO | 127.0.0.1 - - [31/May/2026 12:02:26] "GET /tracker HTTP/1.1" 200 -
+2026-05-31 12:02:35,269 | INFO | Dashboard loaded: 7 workouts
+2026-05-31 12:02:35,331 | INFO | 127.0.0.1 - - [31/May/2026 12:02:35] "GET /dashboard HTTP/1.1" 200 -
+2026-05-31 12:02:40,559 | INFO | 127.0.0.1 - - [31/May/2026 12:02:40] "GET /diet HTTP/1.1" 200 -
+2026-05-31 12:02:41,938 | INFO | Home page visited
+2026-05-31 12:02:41,939 | INFO | 127.0.0.1 - - [31/May/2026 12:02:41] "GET / HTTP/1.1" 200 -

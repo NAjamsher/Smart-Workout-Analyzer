@@ -1,0 +1,31 @@
+2026-03-24 11:12:40,875 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.10:5000
+2026-03-24 11:12:40,875 | INFO | [33mPress CTRL+C to quit[0m
+2026-03-24 11:12:40,877 | INFO |  * Restarting with stat
+2026-03-24 11:12:41,863 | WARNING |  * Debugger is active!
+2026-03-24 11:12:41,866 | INFO |  * Debugger PIN: 433-719-920
+2026-03-24 11:12:44,208 | INFO | Home page visited
+2026-03-24 11:12:44,244 | INFO | 127.0.0.1 - - [24/Mar/2026 11:12:44] "GET / HTTP/1.1" 200 -
+2026-03-24 11:12:44,727 | INFO | 127.0.0.1 - - [24/Mar/2026 11:12:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-24 11:12:46,158 | INFO | Home page visited
+2026-03-24 11:12:46,160 | INFO | 127.0.0.1 - - [24/Mar/2026 11:12:46] "GET / HTTP/1.1" 200 -
+2026-03-24 11:12:59,421 | INFO | 127.0.0.1 - - [24/Mar/2026 11:12:59] "GET /analyzer HTTP/1.1" 200 -
+2026-03-24 11:13:00,829 | INFO | 127.0.0.1 - - [24/Mar/2026 11:13:00] "GET /tracker HTTP/1.1" 200 -
+2026-03-24 11:13:04,318 | INFO | Dashboard loaded: 5 workouts
+2026-03-24 11:13:04,335 | INFO | 127.0.0.1 - - [24/Mar/2026 11:13:04] "GET /dashboard HTTP/1.1" 200 -
+2026-03-24 11:13:07,722 | INFO | Home page visited
+2026-03-24 11:13:07,724 | INFO | 127.0.0.1 - - [24/Mar/2026 11:13:07] "GET / HTTP/1.1" 200 -
+2026-03-24 11:20:27,242 | INFO | 127.0.0.1 - - [24/Mar/2026 11:20:27] "GET /analyzer HTTP/1.1" 200 -
+2026-03-24 11:20:55,879 | INFO | Prediction: age=22, goal=muscle_gain, exp=intermediate \u2192 Strength Training
+2026-03-24 11:20:55,883 | INFO | 127.0.0.1 - - [24/Mar/2026 11:20:55] "POST /analyzer HTTP/1.1" 200 -
+2026-03-24 11:21:28,904 | INFO | 127.0.0.1 - - [24/Mar/2026 11:21:28] "GET /tracker HTTP/1.1" 200 -
+2026-03-24 11:21:48,396 | INFO | Workout added: Strength Training on 2026-03-24
+2026-03-24 11:21:48,398 | INFO | 127.0.0.1 - - [24/Mar/2026 11:21:48] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-03-24 11:21:48,409 | INFO | 127.0.0.1 - - [24/Mar/2026 11:21:48] "GET /tracker HTTP/1.1" 200 -
+2026-03-24 11:21:57,446 | INFO | Dashboard loaded: 6 workouts
+2026-03-24 11:21:57,449 | INFO | 127.0.0.1 - - [24/Mar/2026 11:21:57] "GET /dashboard HTTP/1.1" 200 -
+2026-03-24 11:22:50,999 | INFO | 127.0.0.1 - - [24/Mar/2026 11:22:50] "GET /diet HTTP/1.1" 200 -
+2026-03-24 11:23:53,224 | INFO | Diet plan generated: goal=muscle_gain
+2026-03-24 11:23:53,225 | INFO | 127.0.0.1 - - [24/Mar/2026 11:23:53] "POST /diet HTTP/1.1" 200 -

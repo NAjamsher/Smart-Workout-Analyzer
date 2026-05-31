@@ -1,0 +1,66 @@
+2026-04-17 01:18:31,444 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.8:5000
+2026-04-17 01:18:31,444 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-17 01:18:31,448 | INFO |  * Restarting with stat
+2026-04-17 01:18:33,483 | WARNING |  * Debugger is active!
+2026-04-17 01:18:33,517 | INFO |  * Debugger PIN: 433-719-920
+2026-04-17 01:18:36,662 | INFO | Home page visited
+2026-04-17 01:18:36,876 | INFO | 127.0.0.1 - - [17/Apr/2026 01:18:36] "GET / HTTP/1.1" 200 -
+2026-04-17 01:18:37,521 | INFO | 127.0.0.1 - - [17/Apr/2026 01:18:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-17 01:18:41,209 | INFO | Home page visited
+2026-04-17 01:18:41,210 | INFO | 127.0.0.1 - - [17/Apr/2026 01:18:41] "GET / HTTP/1.1" 200 -
+2026-04-17 01:19:07,735 | INFO | 127.0.0.1 - - [17/Apr/2026 01:19:07] "GET /analyzer HTTP/1.1" 200 -
+2026-04-17 01:19:09,042 | INFO | Home page visited
+2026-04-17 01:19:09,043 | INFO | 127.0.0.1 - - [17/Apr/2026 01:19:09] "GET / HTTP/1.1" 200 -
+2026-04-17 01:19:11,525 | INFO | 127.0.0.1 - - [17/Apr/2026 01:19:11] "GET /analyzer HTTP/1.1" 200 -
+2026-04-17 01:19:24,075 | INFO | Prediction: age=25, goal=weight_loss, exp=beginner \u2192 Cardio + HIIT
+2026-04-17 01:19:24,077 | INFO | 127.0.0.1 - - [17/Apr/2026 01:19:24] "POST /analyzer HTTP/1.1" 200 -
+2026-04-17 01:19:43,306 | INFO | Prediction: age=25, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-04-17 01:19:43,307 | INFO | 127.0.0.1 - - [17/Apr/2026 01:19:43] "POST /analyzer HTTP/1.1" 200 -
+2026-04-17 01:19:59,244 | INFO | 127.0.0.1 - - [17/Apr/2026 01:19:59] "GET /diet HTTP/1.1" 200 -
+2026-04-17 01:20:02,961 | INFO | 127.0.0.1 - - [17/Apr/2026 01:20:02] "GET /analyzer HTTP/1.1" 200 -
+2026-04-17 01:20:15,642 | INFO | 127.0.0.1 - - [17/Apr/2026 01:20:15] "GET /tracker HTTP/1.1" 200 -
+2026-04-17 01:20:21,416 | INFO | Dashboard loaded: 6 workouts
+2026-04-17 01:20:21,474 | INFO | 127.0.0.1 - - [17/Apr/2026 01:20:21] "GET /dashboard HTTP/1.1" 200 -
+2026-04-17 01:20:43,124 | INFO | Home page visited
+2026-04-17 01:20:43,126 | INFO | 127.0.0.1 - - [17/Apr/2026 01:20:43] "GET / HTTP/1.1" 200 -
+2026-04-17 09:48:33,658 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.57.181:5000
+2026-04-17 09:48:33,659 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-17 09:48:33,661 | INFO |  * Restarting with stat
+2026-04-17 09:48:34,825 | WARNING |  * Debugger is active!
+2026-04-17 09:48:34,857 | INFO |  * Debugger PIN: 433-719-920
+2026-04-17 09:48:39,388 | INFO | Home page visited
+2026-04-17 09:48:39,519 | INFO | 127.0.0.1 - - [17/Apr/2026 09:48:39] "GET / HTTP/1.1" 200 -
+2026-04-17 09:48:39,744 | INFO | 127.0.0.1 - - [17/Apr/2026 09:48:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-17 09:49:19,059 | INFO | 127.0.0.1 - - [17/Apr/2026 09:49:19] "GET /analyzer HTTP/1.1" 200 -
+2026-04-17 09:50:33,863 | INFO | Prediction: age=21, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-04-17 09:50:33,865 | INFO | 127.0.0.1 - - [17/Apr/2026 09:50:33] "POST /analyzer HTTP/1.1" 200 -
+2026-04-17 11:19:57,486 | INFO | Prediction: age=21, goal=muscle_gain, exp=beginner \u2192 Strength Training
+2026-04-17 11:19:57,490 | INFO | 127.0.0.1 - - [17/Apr/2026 11:19:57] "POST /analyzer HTTP/1.1" 200 -
+2026-04-17 11:20:50,046 | INFO | Home page visited
+2026-04-17 11:20:50,049 | INFO | 127.0.0.1 - - [17/Apr/2026 11:20:50] "GET / HTTP/1.1" 200 -
+2026-04-17 11:20:56,978 | INFO | 127.0.0.1 - - [17/Apr/2026 11:20:56] "GET /analyzer HTTP/1.1" 200 -
+2026-04-17 11:20:58,095 | INFO | Home page visited
+2026-04-17 11:20:58,096 | INFO | 127.0.0.1 - - [17/Apr/2026 11:20:58] "GET / HTTP/1.1" 200 -
+2026-04-17 11:20:59,183 | INFO | 127.0.0.1 - - [17/Apr/2026 11:20:59] "GET /tracker HTTP/1.1" 200 -
+2026-04-17 11:21:00,775 | INFO | Home page visited
+2026-04-17 11:21:00,776 | INFO | 127.0.0.1 - - [17/Apr/2026 11:21:00] "GET / HTTP/1.1" 200 -
+2026-04-17 13:09:59,782 | INFO | 127.0.0.1 - - [17/Apr/2026 13:09:59] "GET /analyzer HTTP/1.1" 200 -
+2026-04-17 13:10:25,971 | INFO | Prediction: age=22, goal=muscle_gain, exp=intermediate \u2192 Strength Training
+2026-04-17 13:10:25,973 | INFO | 127.0.0.1 - - [17/Apr/2026 13:10:25] "POST /analyzer HTTP/1.1" 200 -
+2026-04-17 13:11:05,593 | INFO | 127.0.0.1 - - [17/Apr/2026 13:11:05] "GET /tracker HTTP/1.1" 200 -
+2026-04-17 13:11:24,080 | INFO | Workout added: Strength Training on 2026-04-17
+2026-04-17 13:11:24,084 | INFO | 127.0.0.1 - - [17/Apr/2026 13:11:24] "[32mPOST /tracker HTTP/1.1[0m" 302 -
+2026-04-17 13:11:24,095 | INFO | 127.0.0.1 - - [17/Apr/2026 13:11:24] "GET /tracker HTTP/1.1" 200 -
+2026-04-17 13:11:32,611 | INFO | Dashboard loaded: 7 workouts
+2026-04-17 13:11:32,682 | INFO | 127.0.0.1 - - [17/Apr/2026 13:11:32] "GET /dashboard HTTP/1.1" 200 -
+2026-04-17 13:11:35,861 | INFO | 127.0.0.1 - - [17/Apr/2026 13:11:35] "GET /diet HTTP/1.1" 200 -
+2026-04-17 13:12:16,844 | INFO | Diet plan generated: goal=muscle_gain
+2026-04-17 13:12:16,845 | INFO | 127.0.0.1 - - [17/Apr/2026 13:12:16] "POST /diet HTTP/1.1" 200 -
+2026-04-17 13:16:08,832 | INFO | Diet plan generated: goal=muscle_gain
+2026-04-17 13:16:08,834 | INFO | 127.0.0.1 - - [17/Apr/2026 13:16:08] "POST /diet HTTP/1.1" 200 -

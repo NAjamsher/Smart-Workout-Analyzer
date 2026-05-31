@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Analytics Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding: 3rem 0 1rem;">
+        <h1 class="page-title">📊 Analytics Dashboard</h1>
+        <p class="page-subtitle">Visualize your fitness progress with interactive charts.</p>
+    </div>
+
+    <!-- ── Summary Stats ──────────────────────────────────────────────────── -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">🏋️</div>
+            <div class="stat-value">{{ stats.total_workouts }}</div>
+            <div class="stat-label">Total Sessions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value">{{ stats.total_calories }}</div>
+            <div class="stat-label">Total Calories</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-value">{{ stats.total_minutes }}</div>
+            <div class="stat-label">Total Minutes</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📏</div>
+            <div class="stat-value">{{ stats.avg_duration }}</div>
+            <div class="stat-label">Avg Duration (min)</div>
+        </div>
+    </div>
+
+    <!-- ── Charts Grid ────────────────────────────────────────────────────── -->
+    <div class="chart-grid">
+
+        <div class="card chart-container">
+            <h3 style="font-family:'Rajdhani',sans-serif; color:#00ff88;
+                       margin-bottom:1rem; letter-spacing:1px; font-size:1rem;">
+            </h3>
+            {{ charts.calories | safe }}
+        </div>
+
+        <div class="card chart-container">
+            <h3 style="font-family:'Rajdhani',sans-serif; color:#00bfff;
+                       margin-bottom:1rem; letter-spacing:1px; font-size:1rem;">
+            </h3>
+            {{ charts.frequency | safe }}
+        </div>
+
+        <div class="card chart-container">
+            {{ charts.duration | safe }}
+        </div>
+
+        <div class="card chart-container">
+            {{ charts.weekly | safe }}
+        </div>
+
+    </div>
+
+    <!-- ── Smart Tips ─────────────────────────────────────────────────────── -->
+    <div class="card" style="border-color:rgba(199,125,255,0.2);">
+        <h2 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; color:#a0a0b0;
+                   letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem;">
+            💡 Smart Tips Based on Your Activity
+        </h2>
+        
+        <div class="tips-grid">
+            {% for tip in tips %}
+            <div class="tip-card">
+                <span class="tip-icon">{{ tip.icon }}</span>
+                <p class="tip-text">{{ tip.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- ── Quick Links ────────────────────────────────────────────────────── -->
+    {% if stats.total_workouts == 0 %}
+    <div style="text-align:center; padding:2rem;">
+        <p style="color:#a0a0b0; margin-bottom:1rem;">
+            Charts will appear once you log workouts!
+        </p>
+        <a href="/tracker" class="btn btn-primary">📝 Log First Workout</a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

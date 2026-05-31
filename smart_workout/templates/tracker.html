@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Workout Tracker{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding: 3rem 0 1rem;">
+        <h1 class="page-title">📝 Workout Tracker</h1>
+        <p class="page-subtitle">Log your workouts, view your history, and track your progress.</p>
+    </div>
+
+    <!-- ── Flash Messages ─────────────────────────────────────────────────── -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
+    </div>
+
+    <!-- ── Add Workout Form ───────────────────────────────────────────────── -->
+    <div class="card">
+        <h2 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; color:#a0a0b0;
+                   letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem;">
+            ➕ Add New Workout
+        </h2>
+        
+        <form method="POST" action="/tracker">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" required
+                           value="{{ today }}"
+                           style="color-scheme:dark;">
+                </div>
+                <div class="form-group">
+                    <label>Workout Type</label>
+                    <select name="workout_type" required>
+                        <option value="Cardio + HIIT">🏃 Cardio + HIIT</option>
+                        <option value="Strength Training">💪 Strength Training</option>
+                        <option value="Running + Cycling">🚴 Running + Cycling</option>
+                        <option value="Yoga + Stretching">🧘 Yoga + Stretching</option>
+                        <option value="Mixed Training">⚡ Mixed Training</option>
+                        <option value="Swimming">🏊 Swimming</option>
+                        <option value="Sports">⚽ Sports</option>
+                        <option value="Other">🏋️ Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Duration (minutes)</label>
+                    <input type="number" name="duration" min="1" max="300" placeholder="e.g. 45" required>
+                </div>
+                <div class="form-group">
+                    <label>Calories Burned</label>
+                    <input type="number" name="calories" step="0.1" min="1" placeholder="e.g. 350" required>
+                </div>
+                <div class="form-group" style="grid-column: span 2;">
+                    <label>Notes (Optional)</label>
+                    <input type="text" name="notes" placeholder="e.g. Felt great! New PR on bench press.">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+                ➕ Add Workout
+            </button>
+        </form>
+    </div>
+
+    <!-- ── Workout History ────────────────────────────────────────────────── -->
+    <div class="card" style="border-color:rgba(0,191,255,0.2);">
+        <h2 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; color:#a0a0b0;
+                   letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem;">
+            📋 Workout History ({{ workouts|length }} sessions)
+        </h2>
+        
+        {% if workouts %}
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Workout Type</th>
+                        <th>Duration</th>
+                        <th>Calories</th>
+                        <th>Notes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for w in workouts %}
+                    <tr>
+                        <td style="color:#666;">{{ loop.index }}</td>
+                        <td>{{ w.date }}</td>
+                        <td>
+                            <span style="background:rgba(0,255,136,0.08); color:#00ff88;
+                                         padding:0.2rem 0.6rem; border-radius:20px; font-size:0.8rem;">
+                                {{ w.workout_type }}
+                            </span>
+                        </td>
+                        <td>{{ w.duration_min }} min</td>
+                        <td style="color:#ffd700; font-weight:600;">🔥 {{ w.calories }}</td>
+                        <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis;">
+                            {{ w.notes or '—' }}
+                        </td>
+                        <td>
+                            <form method="POST" action="/delete_workout/{{ w.id }}"
+                                  onsubmit="return confirm('Delete this workout?')">
+                                <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% else %}
+        <div class="no-data">
+            <p style="font-size:3rem; margin-bottom:1rem;">🏋️</p>
+            <p>No workouts logged yet.</p>
+            <p style="margin-top:0.5rem;">Add your first workout above to start tracking!</p>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+// Auto-set today's date in the date field
+document.querySelector('input[name="date"]').valueAsDate = new Date();
+</script>
+
+{% endblock %}

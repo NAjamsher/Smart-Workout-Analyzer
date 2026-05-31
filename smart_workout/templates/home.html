@@ -1,0 +1,558 @@
+{% extends "base.html" %}
+{% block title %}SmartFit AI — Home{% endblock %}
+
+{% block content %}
+
+<!-- ── Animated Background Particles ─────────────────────────────────────── -->
+<canvas id="particles" style="position:fixed;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;z-index:0;opacity:0.4;"></canvas>
+
+<div style="position:relative;z-index:1;">
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════════════════════════════════════════ -->
+<section style="min-height:92vh; display:flex; align-items:center; padding:4rem 2rem;
+                max-width:1200px; margin:0 auto; gap:4rem; flex-wrap:wrap;">
+
+    <!-- Left: Text Content -->
+    <div style="flex:1; min-width:300px;">
+
+        <!-- Animated Badge -->
+        <div style="display:inline-flex; align-items:center; gap:0.5rem;
+                    background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.25);
+                    border-radius:30px; padding:0.4rem 1.2rem; margin-bottom:2rem;">
+            <span style="width:8px;height:8px;background:#00ff88;border-radius:50%;
+                         display:inline-block;box-shadow:0 0 8px #00ff88;
+                         animation:pulse 2s infinite;"></span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;
+                         color:#00ff88;letter-spacing:3px;text-transform:uppercase;">
+                AI-Powered Fitness Platform
+            </span>
+        </div>
+
+        <h1 style="font-family:'Orbitron',sans-serif;font-size:clamp(2.2rem,4.5vw,3.8rem);
+                   font-weight:900;line-height:1.1;margin-bottom:1.5rem;">
+            <span style="display:block;color:#fff;">Train Smarter</span>
+            <span style="display:block;
+                         background:linear-gradient(135deg,#00ff88 0%,#00bfff 50%,#c77dff 100%);
+                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                         background-clip:text;">
+                With AI Power
+            </span>
+        </h1>
+
+        <p style="font-size:1.05rem;color:#8888aa;line-height:1.8;max-width:480px;margin-bottom:2.5rem;">
+            Get personalized workout plans powered by <strong style="color:#00ff88;">Machine Learning</strong>,
+            track your progress with real-time analytics, and fuel your body with smart nutrition.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;">
+            <a href="/analyzer" style="display:inline-flex;align-items:center;gap:0.6rem;
+               padding:0.9rem 2rem;border-radius:12px;font-weight:700;
+               font-family:'Rajdhani',sans-serif;letter-spacing:1px;font-size:1rem;
+               text-transform:uppercase;text-decoration:none;
+               background:linear-gradient(135deg,#00ff88,#00cc6a);color:#000;
+               box-shadow:0 0 30px rgba(0,255,136,0.35);
+               transition:all 0.3s ease;cursor:pointer;"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 50px rgba(0,255,136,0.6)'"
+               onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 0 30px rgba(0,255,136,0.35)'">
+                ⚡ Start AI Analysis
+            </a>
+            <a href="/dashboard" style="display:inline-flex;align-items:center;gap:0.6rem;
+               padding:0.9rem 2rem;border-radius:12px;font-weight:700;
+               font-family:'Rajdhani',sans-serif;letter-spacing:1px;font-size:1rem;
+               text-transform:uppercase;text-decoration:none;
+               background:transparent;color:#00bfff;
+               border:1.5px solid rgba(0,191,255,0.4);
+               transition:all 0.3s ease;"
+               onmouseover="this.style.background='rgba(0,191,255,0.1)';this.style.borderColor='#00bfff'"
+               onmouseout="this.style.background='transparent';this.style.borderColor='rgba(0,191,255,0.4)'">
+                📊 View Dashboard
+            </a>
+        </div>
+
+        <!-- Mini Social Proof -->
+        <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="display:flex;">
+                    {% for c in ['#00ff88','#00bfff','#c77dff','#ffd700'] %}
+                    <div style="width:28px;height:28px;border-radius:50%;background:{{ c }};
+                                border:2px solid #050508;margin-left:-6px;first:margin-left:0;
+                                display:flex;align-items:center;justify-content:center;
+                                font-size:0.7rem;font-weight:bold;color:#000;">
+                        {{ loop.index }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <span style="color:#8888aa;font-size:0.8rem;">ML Models Trained</span>
+            </div>
+            <div style="color:#8888aa;font-size:0.8rem;">
+                <span style="color:#00ff88;font-weight:700;">98.5%</span> Accuracy
+            </div>
+            <div style="color:#8888aa;font-size:0.8rem;">
+                <span style="color:#ffd700;font-weight:700;">2,000+</span> Data Points
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: User-Facing Engaging Cards -->
+    <div style="flex:1;min-width:300px;position:relative;display:flex;
+                flex-direction:column;gap:1rem;max-width:420px;">
+
+        <!-- Glow blob -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                    width:350px;height:350px;border-radius:50%;pointer-events:none;
+                    background:radial-gradient(ellipse,rgba(0,255,136,0.07) 0%,transparent 70%);"></div>
+
+        <!-- Card 1: Workout of the Day -->
+        <div style="background:linear-gradient(135deg,rgba(0,255,136,0.07),rgba(0,191,255,0.04));
+                    border:1px solid rgba(0,255,136,0.25);border-radius:20px;padding:1.6rem;
+                    position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;
+                        background:radial-gradient(ellipse,rgba(0,255,136,0.12),transparent);
+                        border-radius:50%;pointer-events:none;"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                <span style="font-family:'Rajdhani',sans-serif;font-size:0.72rem;letter-spacing:3px;
+                             color:#00ff88;text-transform:uppercase;">Today's Challenge</span>
+                <span style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);
+                             color:#00ff88;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.7rem;
+                             font-family:'Rajdhani',sans-serif;" id="wod-badge">LIVE</span>
+            </div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;" id="wod-icon">🔥</div>
+            <div style="font-family:'Orbitron',sans-serif;color:#fff;font-size:1.1rem;
+                        font-weight:700;margin-bottom:0.4rem;" id="wod-title">HIIT Blast</div>
+            <div style="color:#8888aa;font-size:0.82rem;line-height:1.6;" id="wod-desc">
+                20 min high-intensity interval training. Burns up to 350 cal. Perfect for fat loss.
+            </div>
+            <div style="margin-top:1rem;display:flex;gap:1rem;">
+                <div style="text-align:center;">
+                    <div style="font-family:'Orbitron',sans-serif;color:#00ff88;font-size:1rem;"
+                         id="wod-cal">350</div>
+                    <div style="color:#555;font-size:0.7rem;margin-top:0.2rem;">CALORIES</div>
+                </div>
+                <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+                <div style="text-align:center;">
+                    <div style="font-family:'Orbitron',sans-serif;color:#00bfff;font-size:1rem;"
+                         id="wod-min">20</div>
+                    <div style="color:#555;font-size:0.7rem;margin-top:0.2rem;">MINUTES</div>
+                </div>
+                <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+                <div style="text-align:center;">
+                    <div style="font-family:'Orbitron',sans-serif;color:#c77dff;font-size:1rem;"
+                         id="wod-diff">HIGH</div>
+                    <div style="color:#555;font-size:0.7rem;margin-top:0.2rem;">INTENSITY</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Motivational Quote (changes daily) -->
+        <div style="background:rgba(199,125,255,0.05);border:1px solid rgba(199,125,255,0.2);
+                    border-radius:18px;padding:1.4rem;position:relative;overflow:hidden;">
+            <div style="font-size:2rem;color:rgba(199,125,255,0.3);line-height:1;margin-bottom:0.5rem;">"</div>
+            <p style="color:#ddd;font-size:0.9rem;line-height:1.7;font-style:italic;margin-bottom:0.75rem;"
+               id="quote-text">
+                The only bad workout is the one that didn't happen.
+            </p>
+            <div style="font-family:'Rajdhani',sans-serif;color:#c77dff;font-size:0.78rem;
+                        letter-spacing:1px;" id="quote-author">— FITNESS WISDOM</div>
+        </div>
+
+        <!-- Card 3: BMI Quick Check -->
+        <div style="background:rgba(0,191,255,0.05);border:1px solid rgba(0,191,255,0.2);
+                    border-radius:18px;padding:1.4rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                <span style="font-family:'Rajdhani',sans-serif;font-size:0.72rem;letter-spacing:3px;
+                             color:#00bfff;text-transform:uppercase;">Quick BMI Check</span>
+                <span style="font-size:1rem;">⚡</span>
+            </div>
+            <div style="display:flex;gap:0.6rem;margin-bottom:0.8rem;">
+                <input id="bmi-weight" type="number" placeholder="Weight kg"
+                       style="flex:1;background:rgba(0,191,255,0.06);border:1px solid rgba(0,191,255,0.2);
+                              color:#fff;padding:0.5rem 0.75rem;border-radius:8px;font-size:0.85rem;
+                              outline:none;font-family:'Inter',sans-serif;width:50%;"
+                       oninput="calcBMI()">
+                <input id="bmi-height" type="number" placeholder="Height cm"
+                       style="flex:1;background:rgba(0,191,255,0.06);border:1px solid rgba(0,191,255,0.2);
+                              color:#fff;padding:0.5rem 0.75rem;border-radius:8px;font-size:0.85rem;
+                              outline:none;font-family:'Inter',sans-serif;width:50%;"
+                       oninput="calcBMI()">
+            </div>
+            <div id="bmi-result" style="display:none;">
+                <div style="display:flex;align-items:center;justify-content:space-between;
+                            background:rgba(0,0,0,0.3);border-radius:10px;padding:0.75rem 1rem;">
+                    <div>
+                        <div style="font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:700;"
+                             id="bmi-value">—</div>
+                        <div style="font-size:0.7rem;color:#555;text-transform:uppercase;
+                                    letter-spacing:1px;margin-top:0.2rem;">Your BMI</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;"
+                             id="bmi-category">—</div>
+                        <div style="font-size:0.7rem;color:#555;margin-top:0.2rem;" id="bmi-tip">—</div>
+                    </div>
+                </div>
+                <!-- BMI bar -->
+                <div style="margin-top:0.75rem;background:rgba(255,255,255,0.05);
+                            border-radius:20px;height:6px;overflow:hidden;">
+                    <div id="bmi-bar" style="height:100%;border-radius:20px;
+                                             transition:width 0.5s ease;width:0%;
+                                             background:linear-gradient(90deg,#00ff88,#ffd700,#ff6b6b);">
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;margin-top:0.3rem;">
+                    <span style="font-size:0.6rem;color:#555;">Underweight</span>
+                    <span style="font-size:0.6rem;color:#555;">Normal</span>
+                    <span style="font-size:0.6rem;color:#555;">Obese</span>
+                </div>
+            </div>
+            <div id="bmi-placeholder" style="color:#555;font-size:0.8rem;text-align:center;padding:0.5rem 0;">
+                Enter your weight & height above ↑
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     LIVE STATS BAR
+══════════════════════════════════════════════════════════════════════════ -->
+<section style="background:linear-gradient(90deg,rgba(0,255,136,0.04),rgba(0,191,255,0.04),rgba(199,125,255,0.04));
+                border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);
+                padding:2.5rem 2rem;margin-bottom:5rem;">
+    <div style="max-width:1200px;margin:0 auto;">
+        <p style="text-align:center;font-family:'Rajdhani',sans-serif;font-size:0.75rem;
+                  letter-spacing:4px;color:#555;text-transform:uppercase;margin-bottom:2rem;">
+            Your Live Stats
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+            {% for icon, val, label, color in [
+                ('🏋️', stats.total_workouts, 'Total Workouts', '#00ff88'),
+                ('🔥', stats.total_calories, 'Calories Burned', '#ff6b6b'),
+                ('⏱️', stats.total_minutes, 'Total Minutes', '#00bfff'),
+                ('📈', stats.avg_duration, 'Avg Duration (min)', '#ffd700')
+            ] %}
+            <div style="text-align:center;padding:1.5rem;background:rgba(255,255,255,0.02);
+                        border:1px solid rgba(255,255,255,0.06);border-radius:16px;
+                        transition:all 0.3s;"
+                 onmouseover="this.style.background='rgba(255,255,255,0.05)';this.style.transform='translateY(-4px)'"
+                 onmouseout="this.style.background='rgba(255,255,255,0.02)';this.style.transform='translateY(0)'">
+                <div style="font-size:2rem;margin-bottom:0.75rem;">{{ icon }}</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:700;
+                            color:{{ color }};text-shadow:0 0 20px {{ color }}55;">
+                    {{ val }}
+                </div>
+                <div style="font-size:0.75rem;color:#555;text-transform:uppercase;
+                            letter-spacing:2px;margin-top:0.4rem;font-family:'Rajdhani',sans-serif;">
+                    {{ label }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     FEATURES SECTION
+══════════════════════════════════════════════════════════════════════════ -->
+<section style="max-width:1200px;margin:0 auto 5rem;padding:0 2rem;">
+
+    <div style="text-align:center;margin-bottom:3rem;">
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:4px;
+                  color:#00ff88;text-transform:uppercase;margin-bottom:0.75rem;">What We Offer</p>
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);
+                   color:#fff;margin-bottom:0.75rem;">Everything You Need</h2>
+        <p style="color:#8888aa;max-width:500px;margin:0 auto;font-size:0.95rem;">
+            A complete AI fitness ecosystem built with real data engineering principles
+        </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+
+        {% set features = [
+            ('/analyzer', '⚡', 'AI Workout Analyzer', '#00ff88',
+             'rgba(0,255,136,0.06)', 'rgba(0,255,136,0.2)',
+             'Enter your profile and get an instant ML-powered workout recommendation with calorie predictions.',
+             'ML · Random Forest · 98.5% Acc'),
+            ('/tracker', '📝', 'Workout Tracker', '#00bfff',
+             'rgba(0,191,255,0.06)', 'rgba(0,191,255,0.2)',
+             'Log every session, view history, and delete entries. Full CRUD powered by SQLite.',
+             'SQLite · CRUD · History'),
+            ('/dashboard', '📊', 'Analytics Dashboard', '#ffd700',
+             'rgba(255,215,0,0.06)', 'rgba(255,215,0,0.2)',
+             '4 interactive charts: calories trend, workout frequency, duration, and weekly progress.',
+             'Matplotlib · Data Viz'),
+            ('/diet', '🥗', 'Diet Suggestions', '#c77dff',
+             'rgba(199,125,255,0.06)', 'rgba(199,125,255,0.2)',
+             'Personalized TDEE calculation, macro targets, and sample meal plans for your goal.',
+             'TDEE · Macros · Meals')
+        ] %}
+
+        {% for url, icon, title, color, bg, border, desc, tags in features %}
+        <a href="{{ url }}" style="text-decoration:none;display:block;">
+            <div style="background:{{ bg }};border:1px solid {{ border }};border-radius:20px;
+                        padding:2rem;height:100%;transition:all 0.35s ease;cursor:pointer;
+                        position:relative;overflow:hidden;"
+                 onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px {{ bg }}'"
+                 onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+
+                <!-- Corner glow -->
+                <div style="position:absolute;top:0;right:0;width:80px;height:80px;
+                            background:radial-gradient(ellipse,{{ border }},transparent);
+                            border-radius:50%;transform:translate(30%,-30%);pointer-events:none;"></div>
+
+                <div style="font-size:2.5rem;margin-bottom:1.2rem;">{{ icon }}</div>
+                <h3 style="font-family:'Orbitron',sans-serif;font-size:1rem;
+                           color:{{ color }};margin-bottom:0.75rem;font-weight:700;">
+                    {{ title }}
+                </h3>
+                <p style="color:#8888aa;font-size:0.88rem;line-height:1.7;margin-bottom:1.25rem;">
+                    {{ desc }}
+                </p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <span style="font-size:0.75rem;color:{{ color }};font-family:'Rajdhani',sans-serif;
+                                 opacity:0.8;">{{ tags }}</span>
+                    <span style="color:{{ color }};font-size:1rem;">→</span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     HOW IT WORKS TIMELINE
+══════════════════════════════════════════════════════════════════════════ -->
+<section style="max-width:1200px;margin:0 auto 5rem;padding:0 2rem;">
+    <div style="text-align:center;margin-bottom:3rem;">
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:4px;
+                  color:#00bfff;text-transform:uppercase;margin-bottom:0.75rem;">The Process</p>
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,3vw,2rem);color:#fff;">
+            How It Works
+        </h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+                gap:0;position:relative;">
+
+        {% for step, icon, title, desc, color in [
+            ('01', '🧬', 'Input Profile', 'Enter age, weight, height, goal & experience level', '#00ff88'),
+            ('02', '⚙️', 'ETL Pipeline', 'Data is extracted, validated, cleaned and processed', '#00bfff'),
+            ('03', '🤖', 'ML Prediction', 'Random Forest model predicts your ideal workout', '#c77dff'),
+            ('04', '📊', 'Analytics', 'Results saved to database and shown in live charts', '#ffd700')
+        ] %}
+        <div style="text-align:center;padding:2rem 1.5rem;position:relative;">
+            <!-- Connector line -->
+            {% if not loop.last %}
+            <div style="position:absolute;top:3.5rem;right:0;width:50%;height:2px;
+                        background:linear-gradient(90deg,{{ color }},transparent);
+                        opacity:0.3;z-index:0;"></div>
+            {% endif %}
+
+            <div style="position:relative;z-index:1;">
+                <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 1rem;
+                            background:rgba(0,0,0,0.5);border:2px solid {{ color }};
+                            display:flex;align-items:center;justify-content:center;
+                            font-size:1.8rem;box-shadow:0 0 20px {{ color }}33;">
+                    {{ icon }}
+                </div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:0.65rem;
+                            color:{{ color }};letter-spacing:2px;margin-bottom:0.4rem;">
+                    STEP {{ step }}
+                </div>
+                <div style="font-family:'Rajdhani',sans-serif;font-size:1.05rem;
+                            color:#fff;font-weight:600;margin-bottom:0.4rem;">
+                    {{ title }}
+                </div>
+                <div style="font-size:0.8rem;color:#8888aa;line-height:1.5;">{{ desc }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     TECH STACK
+══════════════════════════════════════════════════════════════════════════ -->
+<section style="max-width:1200px;margin:0 auto 5rem;padding:0 2rem;">
+    <div style="background:linear-gradient(135deg,rgba(0,255,136,0.03),rgba(0,191,255,0.03));
+                border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:2.5rem;
+                text-align:center;">
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;letter-spacing:4px;
+                  color:#555;text-transform:uppercase;margin-bottom:1.5rem;">Powered By</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
+            {% for tech, color in [
+                ('Python','#00ff88'),('Flask','#00bfff'),('Scikit-learn','#c77dff'),
+                ('Pandas','#ffd700'),('NumPy','#ff6b6b'),('Matplotlib','#ff9a3c'),
+                ('SQLite','#00bfff'),('Random Forest','#00ff88'),
+                ('Gradient Boosting','#c77dff'),('ETL Pipeline','#ffd700'),
+                ('Data Validation','#ff6b6b'),('Logging System','#888')
+            ] %}
+            <span style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+                         color:{{ color }};padding:0.45rem 1rem;border-radius:30px;
+                         font-size:0.8rem;font-family:'Rajdhani',sans-serif;letter-spacing:0.5px;
+                         transition:all 0.2s;"
+                  onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.transform='scale(1.05)'"
+                  onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.transform='scale(1)'">
+                {{ tech }}
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     BOTTOM CTA BANNER
+══════════════════════════════════════════════════════════════════════════ -->
+<section style="max-width:1200px;margin:0 auto 5rem;padding:0 2rem;">
+    <div style="background:linear-gradient(135deg,rgba(0,255,136,0.08) 0%,rgba(0,191,255,0.08) 50%,rgba(199,125,255,0.08) 100%);
+                border:1px solid rgba(0,255,136,0.2);border-radius:24px;
+                padding:4rem 2rem;text-align:center;position:relative;overflow:hidden;">
+
+        <!-- BG decorations -->
+        <div style="position:absolute;top:-50px;left:-50px;width:200px;height:200px;
+                    border-radius:50%;background:radial-gradient(ellipse,rgba(0,255,136,0.08),transparent);
+                    pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-50px;right:-50px;width:200px;height:200px;
+                    border-radius:50%;background:radial-gradient(ellipse,rgba(199,125,255,0.08),transparent);
+                    pointer-events:none;"></div>
+
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:4px;
+                  color:#00ff88;text-transform:uppercase;margin-bottom:1rem;">Ready to Begin?</p>
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);
+                   color:#fff;margin-bottom:1rem;">Start Your AI Fitness Journey</h2>
+        <p style="color:#8888aa;margin-bottom:2rem;max-width:450px;margin-left:auto;margin-right:auto;">
+            Enter your stats and let our 98.5% accurate ML model build your perfect workout plan
+        </p>
+        <a href="/analyzer" style="display:inline-flex;align-items:center;gap:0.75rem;
+           padding:1rem 2.5rem;border-radius:12px;font-weight:700;font-size:1rem;
+           font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;
+           text-decoration:none;background:linear-gradient(135deg,#00ff88,#00cc6a);color:#000;
+           box-shadow:0 0 40px rgba(0,255,136,0.4);transition:all 0.3s;"
+           onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 60px rgba(0,255,136,0.6)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 0 40px rgba(0,255,136,0.4)'">
+            ⚡ Launch AI Analyzer
+        </a>
+    </div>
+</section>
+
+</div><!-- end z-index wrapper -->
+
+<!-- ── Particle Animation Script ─────────────────────────────────────────── -->
+<script>
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = Array.from({length: 60}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.3,
+    dx: (Math.random() - 0.5) * 0.4,
+    dy: (Math.random() - 0.5) * 0.4,
+    color: ['#00ff88','#00bfff','#c77dff','#ffd700'][Math.floor(Math.random()*4)]
+}));
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.x += p.dx; p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+<!-- ── Live Interactive Scripts ─────────────────────────────────────────── -->
+<script>
+// ── Workout of the Day (rotates daily) ───────────────────────────────────
+const workouts = [
+    { icon:'🔥', title:'HIIT Blast',        desc:'20 min high-intensity intervals. Perfect fat burner.',          cal:'350', min:'20', diff:'HIGH' },
+    { icon:'💪', title:'Strength Day',       desc:'Full body compound lifts. Build muscle and boost metabolism.',  cal:'280', min:'45', diff:'MED'  },
+    { icon:'🏃', title:'Endurance Run',      desc:'Steady-state 30 min run. Builds cardio and mental toughness.',  cal:'420', min:'30', diff:'MED'  },
+    { icon:'🧘', title:'Yoga Flow',          desc:'60 min deep stretch. Improves flexibility and reduces stress.', cal:'180', min:'60', diff:'LOW'  },
+    { icon:'⚡', title:'Tabata Circuit',     desc:'8 rounds of 20s on, 10s off. Maximum calorie torch.',           cal:'400', min:'25', diff:'HIGH' },
+    { icon:'🚴', title:'Cycling Intervals',  desc:'Sprint cycling bursts. Great for legs and cardiovascular.',     cal:'380', min:'35', diff:'HIGH' },
+    { icon:'🏋️', title:'Push/Pull/Legs',    desc:'Classic hypertrophy split. Build balanced muscle symmetry.',    cal:'300', min:'50', diff:'MED'  },
+];
+const wod = workouts[new Date().getDay() % workouts.length];
+document.getElementById('wod-icon').textContent  = wod.icon;
+document.getElementById('wod-title').textContent = wod.title;
+document.getElementById('wod-desc').textContent  = wod.desc;
+document.getElementById('wod-cal').textContent   = wod.cal;
+document.getElementById('wod-min').textContent   = wod.min;
+document.getElementById('wod-diff').textContent  = wod.diff;
+
+// ── Motivational Quotes (rotates every 8 seconds) ────────────────────────
+const quotes = [
+    { text: "The only bad workout is the one that didn't happen.",          author: "FITNESS WISDOM"     },
+    { text: "Never be weak.", author: "Jamsher" },
+    { text: "Success starts with self-discipline.",                          author: "ARNOLD SCHWARZENEGGER" },
+    { text: "Take care of your body. It's the only place you have to live.", author: "JIM ROHN"          },
+    { text: "Your body can stand almost anything. It's your mind you have to convince.",                                     author: "GYM CULTURE"        },
+    { text: "Push yourself because no one else is going to do it for you.",  author: "FITNESS WISDOM"    },
+    { text: "The pain you feel today will be the strength you feel tomorrow.",author: "ARNOLD SCHWARZENEGGER" },
+    { text: "Don't wish for it. Work for it.",                               author: "GYM CULTURE"        },
+];
+let qi = 0;
+function rotateQuote() {
+    const el = document.getElementById('quote-text');
+    const au = document.getElementById('quote-author');
+    el.style.opacity = '0';
+    setTimeout(() => {
+        qi = (qi + 1) % quotes.length;
+        el.textContent = quotes[qi].text;
+        au.textContent = '— ' + quotes[qi].author;
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '1';
+    }, 400);
+}
+setInterval(rotateQuote, 8000);
+
+// ── Quick BMI Calculator ─────────────────────────────────────────────────
+function calcBMI() {
+    const w = parseFloat(document.getElementById('bmi-weight').value);
+    const h = parseFloat(document.getElementById('bmi-height').value);
+    if (!w || !h || h < 50) return;
+
+    const bmi = (w / ((h/100) ** 2)).toFixed(1);
+    let cat, color, tip, pct;
+
+    if (bmi < 18.5)      { cat='Underweight'; color='#00bfff'; tip='Eat more & build muscle'; pct=15; }
+    else if (bmi < 25)   { cat='Normal ✓';    color='#00ff88'; tip='Great shape! Keep going'; pct=40; }
+    else if (bmi < 30)   { cat='Overweight';  color='#ffd700'; tip='Cardio + diet adjustment'; pct=65; }
+    else                 { cat='Obese';        color='#ff6b6b'; tip='Consult a fitness coach'; pct=88; }
+
+    document.getElementById('bmi-value').textContent    = bmi;
+    document.getElementById('bmi-value').style.color    = color;
+    document.getElementById('bmi-category').textContent = cat;
+    document.getElementById('bmi-category').style.color = color;
+    document.getElementById('bmi-tip').textContent      = tip;
+    document.getElementById('bmi-bar').style.width      = pct + '%';
+    document.getElementById('bmi-result').style.display      = 'block';
+    document.getElementById('bmi-placeholder').style.display = 'none';
+}
+</script>
+
+<!-- ── Pulse Keyframe ─────────────────────────────────────────────────────── -->
+<style>
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(1.3); }
+}
+</style>
+
+{% endblock %}

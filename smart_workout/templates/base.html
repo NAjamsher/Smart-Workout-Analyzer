@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Smart Workout Analytics{% endblock %}</title>
+    
+
+
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ── CSS Reset & Base ─────────────────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary:   #050508;
+            --bg-secondary: #0d0d15;
+            --bg-card:      #111120;
+            --bg-card2:     #181830;
+            --accent-green: #00ff88;
+            --accent-blue:  #00bfff;
+            --accent-purple:#c77dff;
+            --accent-red:   #ff4757;
+            --accent-gold:  #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary:#a0a0b0;
+            --border:       rgba(0,255,136,0.15);
+            --glow-green:   0 0 20px rgba(0,255,136,0.3);
+            --glow-blue:    0 0 20px rgba(0,191,255,0.3);
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(ellipse at 20% 0%, rgba(0,255,136,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 0%, rgba(0,191,255,0.04) 0%, transparent 50%);
+        }
+        
+        /* ── Navigation ───────────────────────────────────────────── */
+        nav {
+            background: rgba(5,5,8,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: var(--glow-green);
+        }
+        
+        .nav-logo span { color: var(--accent-blue); }
+        
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-green);
+            background: rgba(0,255,136,0.08);
+            border-color: var(--border);
+        }
+        
+        /* ── Page Container ───────────────────────────────────────── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        /* ── Cards ────────────────────────────────────────────────── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .card:hover { box-shadow: var(--glow-green); }
+        
+        .card-blue:hover { box-shadow: var(--glow-blue); }
+        
+        /* ── Section Headers ──────────────────────────────────────── */
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* ── Forms ────────────────────────────────────────────────── */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0,255,136,0.2);
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(0,255,136,0.1);
+        }
+        
+        .form-group select option { background: var(--bg-card); }
+        
+        /* ── Buttons ──────────────────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-green), #00cc6a);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0,255,136,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,255,136,0.5);
+        }
+        
+        .btn-danger {
+            background: rgba(255,71,87,0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(255,71,87,0.3);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .btn-danger:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+        
+        /* ── Stat Cards ───────────────────────────────────────────── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-card2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-card .stat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .stat-card .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+        
+        /* ── Flash Messages ───────────────────────────────────────── */
+        .flash-messages { margin-bottom: 1rem; }
+        .flash {
+            padding: 0.9rem 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .flash.success { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); color: var(--accent-green); }
+        .flash.error   { background: rgba(255,71,87,0.1);  border: 1px solid rgba(255,71,87,0.3);  color: var(--accent-red); }
+        
+        /* ── Tables ───────────────────────────────────────────────── */
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        tr:hover td { background: rgba(0,255,136,0.03); color: var(--text-primary); }
+        
+        /* ── Charts ───────────────────────────────────────────────── */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container { min-height: 350px; }
+        
+        /* ── Result Box ───────────────────────────────────────────── */
+        .result-box {
+            background: linear-gradient(135deg, rgba(0,255,136,0.05), rgba(0,191,255,0.05));
+            border: 1px solid rgba(0,255,136,0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .result-item {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .result-item .r-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+        
+        .result-item .r-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+        
+        .exercise-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .exercise-item {
+            background: var(--bg-card2);
+            border: 1px solid rgba(0,191,255,0.15);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .exercise-item::before { content: '▶'; color: var(--accent-green); font-size: 0.6rem; }
+        
+        /* ── Tips ─────────────────────────────────────────────────── */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tip-card {
+            background: var(--bg-card2);
+            border: 1px solid rgba(199,125,255,0.2);
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .tip-icon { font-size: 1.5rem; }
+        .tip-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+        
+        /* ── No Data ──────────────────────────────────────────────── */
+        .no-data {
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+        }
+        
+        /* ── Error Box ────────────────────────────────────────────── */
+        .error-box {
+            background: rgba(255,71,87,0.1);
+            border: 1px solid rgba(255,71,87,0.3);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            color: var(--accent-red);
+            margin-top: 1rem;
+        }
+        
+        /* ── Footer ───────────────────────────────────────────────── */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+        
+        /* ── Responsive ───────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 1.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────────────────── -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="url(#grad1)"/>
+              <defs><linearGradient id="grad1" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#00ff88"/><stop offset="100%" stop-color="#00bfff"/></linearGradient></defs>
+              <path d="M8 20 L12 12 L16 22 L20 10 L24 20" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="24" cy="20" r="2" fill="#000"/>
+              <circle cx="8" cy="20" r="2" fill="#000"/>
+            </svg>
+            <span style="font-family:Orbitron,sans-serif;font-size:1.15rem;font-weight:900;color:#00ff88;text-shadow:0 0 15px rgba(0,255,136,0.5);">SMART<span style="color:#00bfff;">FIT</span> <span style="font-size:0.8rem;color:#555;">AI</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/"          {% if request.path == '/' %}class="active"{% endif %}>🏠 Home</a></li>
+            <li><a href="/analyzer"  {% if request.path == '/analyzer' %}class="active"{% endif %}>🤖 Analyzer</a></li>
+            <li><a href="/tracker"   {% if request.path == '/tracker' %}class="active"{% endif %}>📝 Tracker</a></li>
+            <li><a href="/dashboard" {% if request.path == '/dashboard' %}class="active"{% endif %}>📊 Dashboard</a></li>
+            <li><a href="/diet"      {% if request.path == '/diet' %}class="active"{% endif %}>🥗 Diet</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ── Main Content ───────────────────────────────────────────────────────── -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- ── Footer ────────────────────────────────────────────────────────────── -->
+<footer>
+    <p>SmartFit AI — Smart Workout & Progress Analytics System</p>
+    <p style="margin-top:0.3rem; color:#333;">Built with Python · Flask · Scikit-learn · Plotly · SQLite</p>
+</footer>
+
+</body>
+</html>
